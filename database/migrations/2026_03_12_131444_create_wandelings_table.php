@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('distance');
             $table->string('location');
-            $table->$table->timestamp('date_of_hike')->nullable()->default(time());
+            $table->timestamp('date_of_hike')->nullable()->default(time());
             $table->timestamps();
         });
     }
