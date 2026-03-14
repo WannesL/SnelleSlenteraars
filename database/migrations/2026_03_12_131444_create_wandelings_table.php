@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('wandelings', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('distance');
+            $table->string('location');
+            $table->$table->timestamp('date_of_hike')->nullable()->default(time());
             $table->timestamps();
         });
     }
