@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-final class WandelingController extends Controller
+final class HomeController extends Controller
 {
     public function index(): View
     {
