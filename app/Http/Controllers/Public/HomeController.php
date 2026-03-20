@@ -6,11 +6,16 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Models\Wandeling;
 
 final class HomeController extends Controller
 {
     public function index(): View
-    {
-        return view('public.home');
-    }
+{
+    $hikes = Wandeling::all();
+
+    return view('public.home', [
+        'hikes' => $hikes
+    ]);
+}
 }
