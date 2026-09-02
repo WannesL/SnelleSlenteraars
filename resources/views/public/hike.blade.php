@@ -1,0 +1,1 @@
+<p>{{$wandeling->title}}</p>
