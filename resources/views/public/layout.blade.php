@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="nl" class="h-full">
 <head>
-    @vite('resources/css/app.css')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Snelle Slenteraars</title>
+    <title>@yield('title', 'Snelle Slenteraars')</title>
+    @vite('resources/css/app.css')
 </head>
-<body>
+<body class="min-h-full bg-gray-50 text-gray-800">
+
+    <header class="bg-green-700 text-white">
+        <div class="max-w-6xl mx-auto p-4">
+            <a href="{{ route('home') }}" class="text-2xl font-bold">Snelle Slenteraars</a>
+        </div>
+    </header>
+
+    <main>
+        @yield('content')
+    </main>
 
 </body>
 </html>

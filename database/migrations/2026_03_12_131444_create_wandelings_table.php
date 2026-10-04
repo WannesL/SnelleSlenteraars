@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('wandelings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
-            $table->string('distance');
+            $table->text('description');
+            $table->decimal('distance', 5, 1);
             $table->string('location');
-            $table->timestamp('date_of_hike')->nullable()->default(time());
+            $table->dateTime('date_of_hike');
             $table->timestamps();
         });
     }

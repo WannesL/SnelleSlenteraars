@@ -1,3 +1,6 @@
+@extends('public.layout')
+
+@section('content')
 <div class="max-w-6xl mx-auto p-6">
     <h1 class="text-3xl font-bold mb-6">Onze wandelingen</h1>
 
@@ -11,3 +14,4 @@
 
     </div>
 </div>
+@endsection

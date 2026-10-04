@@ -15,6 +15,7 @@ class Wandeling extends Model
     ];
 
     protected $casts = [
-        'date' => 'datetime',
+        'date_of_hike' => 'datetime',
+        'distance' => 'decimal:1',
     ];
 }

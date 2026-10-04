@@ -10,9 +10,8 @@ use App\Models\Wandeling;
 
 final class WandelingController extends Controller
 {
-    public function show($id): View
+    public function show(Wandeling $wandeling): View
     {
-        $wandeling= Wandeling::query()->where('id', $id)->firstOrFail();
 
         return view('public.hike', ['wandeling' => $wandeling]);
         }

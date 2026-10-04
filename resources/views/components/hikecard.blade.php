@@ -14,7 +14,7 @@
         </h2>
 
         <p class="text-gray-600 text-sm mb-1">
-            📅 {{ \Carbon\Carbon::parse($wandeling->date_of_hike)->format('d/m/Y') }}
+            📅 {{ $wandeling->date_of_hike)->format('d/m/Y') }}
         </p>
 
         <p class="text-gray-600 text-sm mb-1">
@@ -25,7 +25,7 @@
             🚶 {{ $wandeling->distance}} km
         </p>
 
-        <a href="#" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+        <a href="{{ route('wandeling', $wandeling)}}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
             Bekijk wandeling
         </a>
     </div>
