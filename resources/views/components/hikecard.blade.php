@@ -1,12 +1,9 @@
 @props(['wandeling'])
 
-<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-
-    <img
-        src="https://placehold.co/400x200?text={{ urlencode($wandeling->location) }}"
-        alt="{{ $wandeling->title }}"
-        class="w-full h-40 object-cover"
-    >
+<div
+    class="bg-white rounded-3xl shadow-md overflow-hidden transition hover:shadow-xl hover:-rotate-1 hover:-translate-y-1">
+    <img src="https://placehold.co/400x200?text={{ urlencode($wandeling->location) }}" alt="{{ $wandeling->title }}"
+        class="w-full h-40 object-cover">
 
     <div class="p-4">
         <h2 class="text-xl font-semibold mb-2">
@@ -18,15 +15,16 @@
         </p>
 
         <p class="text-gray-600 text-sm mb-1">
-            📍 {{ $wandeling->location}}
+            📍 {{ $wandeling->location }}
         </p>
 
         <p class="text-gray-600 text-sm mb-3">
-            🚶 {{ $wandeling->distance}} km
+            🚶 {{ $wandeling->distance }} km
         </p>
 
-        <a href="{{ route('wandeling', $wandeling)}}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
-            Bekijk wandeling
+        <a href="{{ route('wandeling', $wandeling) }}"
+            class="inline-block bg-zon-500 text-white font-semibold px-5 py-2 rounded-full hover:bg-zon-600 transition">
+            Bekijk wandeling →
         </a>
     </div>
 
