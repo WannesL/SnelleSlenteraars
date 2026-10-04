@@ -3,7 +3,7 @@
 <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
 
     <img
-        src="https://via.placeholder.com/400x200"
+        src="https://placehold.co/400x200?text={{ urlencode($wandeling->location) }}"
         alt="{{ $wandeling->title }}"
         class="w-full h-40 object-cover"
     >

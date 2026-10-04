@@ -6,7 +6,28 @@
 @source '../**/*.js';
 
 
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Lettertypes */
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fredoka', 'Nunito', sans-serif;
+
+    /* Mosgroen: hoofdkleur */
+    --color-mos-50:  #f3f7ee;
+    --color-mos-100: #e3edd6;
+    --color-mos-500: #6b8f47;
+    --color-mos-600: #557538;
+    --color-mos-700: #435c2d;
+    --color-mos-800: #33461f;
+
+    /* Zon: accentkleur voor knoppen en highlights */
+    --color-zon-100: #fdecd2;
+    --color-zon-400: #f4a340;
+    --color-zon-500: #e88a1a;
+    --color-zon-600: #c96f0c;
+
+    /* Achtergrond en tekst */
+    --color-creme:  #fbf7ef;
+    --color-schors: #3d3229;
 }
+
