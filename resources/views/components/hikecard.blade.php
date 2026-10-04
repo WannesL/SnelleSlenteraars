@@ -14,7 +14,7 @@
         </h2>
 
         <p class="text-gray-600 text-sm mb-1">
-            📅 {{ $wandeling->date_of_hike)->format('d/m/Y') }}
+            📅 {{ $wandeling->date_of_hike->format('d/m/Y') }}
         </p>
 
         <p class="text-gray-600 text-sm mb-1">

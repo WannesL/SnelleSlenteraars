@@ -12,10 +12,13 @@ final class HomeController extends Controller
 {
     public function index(): View
 {
-    $hikes = Wandeling::all();
+    $hikes = Wandeling::where('date_of_hike', '>=', today())
+        ->orderBy('date_of_hike')
+        ->take(4)
+        ->get();
 
     return view('public.home', [
-        'hikes' => $hikes
+        'hikes' => $hikes,
     ]);
-}
+    }
 }
