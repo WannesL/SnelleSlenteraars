@@ -11,14 +11,14 @@ use App\Models\Wandeling;
 final class HomeController extends Controller
 {
     public function index(): View
-{
-    $hikes = Wandeling::where('date_of_hike', '>=', today())
-        ->orderBy('date_of_hike')
-        ->take(4)
-        ->get();
+    {
+        $hikes = Wandeling::upcoming()
+            ->withSum('inschrijvingen', 'people')
+            ->take(4)
+            ->get();
 
-    return view('public.home', [
-        'hikes' => $hikes,
-    ]);
+        return view('public.home', [
+            'hikes' => $hikes,
+        ]);
     }
 }

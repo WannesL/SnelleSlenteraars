@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Wandeling extends Model
 {
@@ -44,5 +45,11 @@ class Wandeling extends Model
     public function inschrijvingen(): HasMany
     {
         return $this->hasMany(Inschrijving::class);
+    }
+
+    public function scopeUpcoming(Builder $query): Builder
+    {
+        return $query->where('date_of_hike', '>=', today())
+            ->orderBy('date_of_hike');
     }
 }

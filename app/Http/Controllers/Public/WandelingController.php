@@ -13,7 +13,8 @@ final class WandelingController extends Controller
     public function show(Wandeling $wandeling): View
     {
 
-        return view('public.hike', ['wandeling' => $wandeling]);
-        }
-        }
+        $aantal = (int) $wandeling->inschrijvingen()->sum('people');
 
+        return view('public.hike', ['wandeling' => $wandeling, 'aantal' => $aantal,]);
+    }
+}

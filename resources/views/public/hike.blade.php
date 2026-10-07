@@ -11,9 +11,11 @@
 
     {{-- Kop, zoals bovenaan de flyer --}}
     <p class="mt-6 text-zon-600 font-semibold">Wandelclub De Snelle Slenteraars</p>
-    <h1 class="font-display text-4xl md:text-5xl font-semibold pb-4 mb-6 border-b-2 border-mos-100">
+    <h1 class="font-display text-4xl md:text-5xl font-semibold pb-4 mb-4 border-b-2 border-mos-100">
         {{ $wandeling->title }}
     </h1>
+
+    <x-aantal-badge :aantal="$aantal" class="mb-6" />
 
     <img src="{{ $wandeling->imageUrl() }}" alt="{{ $wandeling->title }}"
          class="w-full h-72 md:h-96 object-cover rounded-3xl shadow-md">

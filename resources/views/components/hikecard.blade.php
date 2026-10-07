@@ -28,4 +28,9 @@
         </a>
     </div>
 
+    <div class="mt-auto pt-5 flex items-center justify-between gap-2">
+    <x-aantal-badge :aantal="(int) $wandeling->inschrijvingen_sum_people" />
+    <span class="font-semibold text-zon-600 group-hover:underline">Lees meer →</span>
+</div>
+
 </div>
