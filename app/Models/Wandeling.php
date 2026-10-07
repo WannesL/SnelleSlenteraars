@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Wandeling extends Model
 {
@@ -38,5 +39,10 @@ class Wandeling extends Model
         $regels = explode("\n", $this->practical_info ?? '');
 
         return array_values(array_filter(array_map('trim', $regels)));
+    }
+
+    public function inschrijvingen(): HasMany
+    {
+        return $this->hasMany(Inschrijving::class);
     }
 }
