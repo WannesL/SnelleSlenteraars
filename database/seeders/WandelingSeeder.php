@@ -32,7 +32,7 @@ class WandelingSeeder extends Seeder
             ]);
         }
 
-        Wandeling::create([
+        $makegem = Wandeling::create([
             'title' => 'Door de Makegemse bossen',
             'description' => 'De Snelle Slenteraars trekken deze keer naar de Makegemse bossen. Een mooie herfstwandeling door een prachtig en rustig bos ten zuiden van Gent. We beginnen in het dorpje Bottelare en trekken van de velden de bossen in. We volgen af en toe een plankenpad overheen de modder. We passeren een klein gehuchtje waar de tijd wat is blijven stilstaan. Terwijl de herfstzon (hopelijk) stilletjes daalt lussen we terug naar Bottelare.',
             'distance' => 12,
@@ -43,6 +43,12 @@ class WandelingSeeder extends Seeder
             'practical_info' => "Voorzie een snack en voldoende water.\nDoe goeie schoenen aan, de grond kan nat en slipperig zijn.\nEventueel kunnen we nog iets drinken onderweg, we passeren een cafeetje. We zien wel ter plaatse.",
             'image' => 'makegemse-bossen.jpg',
             'map_image' => 'makegemse-bossen-kaart.png',
+        ]);
+
+        $makegem->inschrijvingen()->createMany([
+            ['first_name' => 'An', 'last_name' => 'Peeters', 'people' => 2],
+            ['first_name' => 'Jef', 'last_name' => 'Claeys', 'people' => 1],
+            ['first_name' => 'Lotte', 'last_name' => 'Maes', 'people' => 4],
         ]);
     }
 }
