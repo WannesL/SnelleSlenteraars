@@ -31,5 +31,18 @@ class WandelingSeeder extends Seeder
                 'date_of_hike' => now()->addDays($days)->setTime(9, 30),
             ]);
         }
+
+        Wandeling::create([
+            'title' => 'Door de Makegemse bossen',
+            'description' => 'De Snelle Slenteraars trekken deze keer naar de Makegemse bossen. Een mooie herfstwandeling door een prachtig en rustig bos ten zuiden van Gent. We beginnen in het dorpje Bottelare en trekken van de velden de bossen in. We volgen af en toe een plankenpad overheen de modder. We passeren een klein gehuchtje waar de tijd wat is blijven stilstaan. Terwijl de herfstzon (hopelijk) stilletjes daalt lussen we terug naar Bottelare.',
+            'distance' => 12,
+            'location' => 'De kerk van Bottelare',
+            'meeting_info' => 'Daar kan je gemakkelijk parkeren en daar start én eindigt de wandeling.',
+            'date_of_hike' => '2026-10-25 13:30:00',
+            'end_of_hike' => '2026-10-25 17:00:00',
+            'practical_info' => "Voorzie een snack en voldoende water.\nDoe goeie schoenen aan, de grond kan nat en slipperig zijn.\nEventueel kunnen we nog iets drinken onderweg, we passeren een cafeetje. We zien wel ter plaatse.",
+            'image' => 'makegemse-bossen.jpg',
+            'map_image' => 'makegemse-bossen-kaart.png',
+        ]);
     }
 }

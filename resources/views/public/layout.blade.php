@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="h-full">
+<html lang="nl" class="h-full scroll-smooth">
 
 <head>
     <meta charset="UTF-8">

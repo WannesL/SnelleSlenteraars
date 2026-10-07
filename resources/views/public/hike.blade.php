@@ -1,43 +1,76 @@
 @extends('public.layout')
 
-@section('title', $wandeling->title . ' - Snelle Slenteraars')
+@section('title', $wandeling->title . ' – Snelle Slenteraars')
 
 @section('content')
-    <div class="max-w-3xl mx-auto p-6">
+<article class="max-w-3xl mx-auto px-6 py-10">
 
-        <a href="{{ route('home') }}" class="text-green-700 hover:underline">
-            ← Terug naar alle wandelingen
-        </a>
+    <a href="{{ route('home') }}" class="text-mos-600 hover:underline print:hidden">
+        ← Terug naar alle wandelingen
+    </a>
 
-        <img src="https://placehold.co/800x300?text={{ urlencode($wandeling->location) }}" alt="{{ $wandeling->title }}"
-            class="w-full h-64 object-cover rounded-2xl mt-4">
+    {{-- Kop, zoals bovenaan de flyer --}}
+    <p class="mt-6 text-zon-600 font-semibold">Wandelclub De Snelle Slenteraars</p>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold pb-4 mb-6 border-b-2 border-mos-100">
+        {{ $wandeling->title }}
+    </h1>
 
-        <h1 class="font-display text-3xl font-semibold mb-6">{{ $wandeling->title }}</h1>
+    <img src="{{ $wandeling->imageUrl() }}" alt="{{ $wandeling->title }}"
+         class="w-full h-72 md:h-96 object-cover rounded-3xl shadow-md">
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-            <div class="bg-white rounded-xl shadow p-4">
-                <p class="text-sm text-gray-500">Datum</p>
-                <p class="font-semibold">{{ $wandeling->date_of_hike->translatedFormat('l j F Y') }}</p>
-                <p class="text-sm text-gray-600">Start om {{ $wandeling->date_of_hike->format('H:i') }}</p>
-            </div>
+    {{-- De flyerblokken, met een lijn ertussen --}}
+    <div class="mt-4 divide-y divide-mos-100">
 
-            <div class="bg-white rounded-xl shadow p-4">
-                <p class="text-sm text-gray-500">Afstand</p>
-                <p class="font-semibold">{{ $wandeling->distance }} km</p>
-            </div>
+        <x-flyer-section title="Wat?">
+            <p class="whitespace-pre-line">{{ $wandeling->description }}</p>
+        </x-flyer-section>
 
-            <div class="bg-white rounded-xl shadow p-4">
-                <p class="text-sm text-gray-500">Locatie</p>
-                <p class="font-semibold">{{ $wandeling->location }}</p>
-                <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($wandeling->location) }}"
-                    target="_blank" class="text-sm text-green-700 hover:underline">
-                    Bekijk op kaart
-                </a>
-            </div>
-        </div>
+        <x-flyer-section title="Wanneer?">
+            <strong>{{ ucfirst($wandeling->date_of_hike->translatedFormat('l j F Y')) }}</strong>
+        </x-flyer-section>
 
-        <h2 class="font-display text-3xl font-semibold mb-6">Over deze wandeling</h2>
-        <p class="text-gray-700 leading-relaxed whitespace-pre-line">{{ $wandeling->description }}</p>
+        <x-flyer-section title="Waar?">
+            <p>We spreken af aan <strong>{{ lcfirst($wandeling->location) }}</strong>.</p>
+            @if ($wandeling->meeting_info)
+                <p>{{ $wandeling->meeting_info }}</p>
+            @endif
+        </x-flyer-section>
+
+        <x-flyer-section title="Vertrek">
+            <strong>{{ $wandeling->date_of_hike->format('G\ui') }}</strong>
+        </x-flyer-section>
+
+        @if ($wandeling->end_of_hike)
+            <x-flyer-section title="Verwachte aankomst">
+                Rond <strong>{{ $wandeling->end_of_hike->format('G\ui') }}</strong> zijn we terug aan de auto's.
+            </x-flyer-section>
+        @endif
+
+        <x-flyer-section title="Afstand">
+            De wandeling is <strong>{{ number_format($wandeling->distance, 1, ',', '.') }} km</strong> lang.
+        </x-flyer-section>
+
+        @if (count($wandeling->practicalInfoList()))
+            <x-flyer-section title="Praktische info">
+                <ul class="list-disc pl-5 space-y-1 marker:text-zon-500">
+                    @foreach ($wandeling->practicalInfoList() as $tip)
+                        <li>{{ $tip }}</li>
+                    @endforeach
+                </ul>
+            </x-flyer-section>
+        @endif
+
+        <x-flyer-section title="Kaart">
+            @if ($wandeling->map_image)
+                <img src="{{ asset('images/kaarten/' . $wandeling->map_image) }}"
+                     alt="Kaart van de wandeling {{ $wandeling->title }}"
+                     class="w-full rounded-2xl border border-mos-100">
+            @else
+                <iframe src="https://maps.google.com/maps?q={{ urlencode($wandeling->location) }}&output=embed"
+                        class="w-full h-80 rounded-2xl border-0" loading="lazy"></iframe>
+            @endif
+        </x-flyer-section>
 
     </div>
+</article>
 @endsection
