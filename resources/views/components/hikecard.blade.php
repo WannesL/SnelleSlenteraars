@@ -1,36 +1,46 @@
 @props(['wandeling'])
 
-<div
-    class="bg-white rounded-3xl shadow-md overflow-hidden transition hover:shadow-xl hover:-rotate-1 hover:-translate-y-1">
-    <img src="https://placehold.co/400x200?text={{ urlencode($wandeling->location) }}" alt="{{ $wandeling->title }}"
-        class="w-full h-40 object-cover">
+<a href="{{ route('wandeling', $wandeling) }}"
+   class="group flex flex-col bg-white rounded-3xl shadow-md overflow-hidden transition hover:shadow-xl hover:-translate-y-1">
 
-    <div class="p-4">
-        <h2 class="text-xl font-semibold mb-2">
-            {{ $wandeling->title }}
-        </h2>
-
-        <p class="text-gray-600 text-sm mb-1">
-            📅 {{ $wandeling->date_of_hike->format('d/m/Y') }}
-        </p>
-
-        <p class="text-gray-600 text-sm mb-1">
-            📍 {{ $wandeling->location }}
-        </p>
-
-        <p class="text-gray-600 text-sm mb-3">
-            🚶 {{ $wandeling->distance }} km
-        </p>
-
-        <a href="{{ route('wandeling', $wandeling) }}"
-            class="inline-block bg-zon-500 text-white font-semibold px-5 py-2 rounded-full hover:bg-zon-600 transition">
-            Bekijk wandeling →
-        </a>
+    {{-- Foto --}}
+    <div class="overflow-hidden">
+        <img src="{{ $wandeling->imageUrl() }}" alt="{{ $wandeling->title }}"
+             class="w-full h-56 object-cover transition duration-500 group-hover:scale-105">
     </div>
 
-    <div class="mt-auto pt-5 flex items-center justify-between gap-2">
-    <x-aantal-badge :aantal="(int) $wandeling->inschrijvingen_sum_people" />
-    <span class="font-semibold text-zon-600 group-hover:underline">Lees meer →</span>
-</div>
+    <div class="flex flex-col flex-1 p-6">
 
-</div>
+        {{-- Titel --}}
+        <h3 class="font-display text-2xl font-semibold pb-3 mb-4 border-mos-100">
+            {{ $wandeling->title }}
+        </h3>
+
+        {{-- Gegevens --}}
+        <dl class="text-sm border-t border-mos-100 divide-y divide-mos-100">
+            <div class="flex justify-between gap-4 py-2">
+                <dt class="text-mos-600">Wanneer?</dt>
+                <dd class="font-bold text-right">{{ ucfirst($wandeling->date_of_hike->translatedFormat('l j F Y')) }}</dd>
+            </div>
+            <div class="flex justify-between gap-4 py-2">
+                <dt class="text-mos-600">Vertrek</dt>
+                <dd class="font-bold">{{ $wandeling->date_of_hike->format('G\ui') }}</dd>
+            </div>
+            <div class="flex justify-between gap-4 py-2">
+                <dt class="text-mos-600">Afstand</dt>
+                <dd class="font-bold">{{ number_format($wandeling->distance, 1, ',', '.') }} km</dd>
+            </div>
+            <div class="flex justify-between gap-4 py-2">
+                <dt class="text-mos-600">Afspraakplaats</dt>
+                <dd class="font-bold text-right">{{ $wandeling->location }}</dd>
+            </div>
+        </dl>
+
+        {{-- Onderaan: teller + link --}}
+        <div class="mt-auto pt-5 flex items-center justify-between gap-2">
+            <x-aantal-badge :aantal="(int) $wandeling->inschrijvingen_sum_people" />
+
+        </div>
+
+    </div>
+</a>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\WandelingController;
+use App\Http\Controllers\Public\InschrijvingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
