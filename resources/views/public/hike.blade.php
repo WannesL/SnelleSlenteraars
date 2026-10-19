@@ -137,7 +137,7 @@
 
                             <button type="submit"
                                 class="bg-zon-500 hover:bg-zon-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Inschrijven 🥾
+                                Inschrijven
                             </button>
 
                             <p class="text-sm text-schors/70">Je naam is enkel zichtbaar voor de organisatoren.</p>
